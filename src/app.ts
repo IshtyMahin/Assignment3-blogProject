@@ -12,12 +12,6 @@ const app: Application = express();
 
 app.use(express.json());
 app.use(cors());
-
-app.use('/api', router);
-
-app.use(globalErrorHandler);
-
-app.use(notFound);
 const getAController = (req: Request, res: Response) => {
   res.status(200).json({
     message: 'Welcome to blog project',
@@ -25,5 +19,11 @@ const getAController = (req: Request, res: Response) => {
 };
 
 app.get('/', getAController);
+app.use('/api', router);
+
+app.use(globalErrorHandler);
+
+app.use(notFound);
+
 
 export default app;
